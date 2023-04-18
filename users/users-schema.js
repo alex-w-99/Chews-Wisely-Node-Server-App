@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const usersSchema = mongoose.Schema(
     {
-        uid: {
+        _id: {
             type: String,
             required: true
         },
@@ -33,9 +33,20 @@ const usersSchema = mongoose.Schema(
             required: false,
             default: "https://via.placeholder.com/150"
         },
+        bannerPicture: {
+            type: String,
+            required: false,
+            default: "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__480.jpg"
+        },
         aboutMe: {
             type: String,
             required: false,
+            default: ""
+        },
+        website: {
+            type: String,
+            required: false,
+            min: 10, max: 50,
             default: ""
         },
         email: {
