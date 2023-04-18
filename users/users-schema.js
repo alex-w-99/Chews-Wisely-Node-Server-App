@@ -2,21 +2,30 @@ import mongoose from "mongoose";
 
 const usersSchema = mongoose.Schema(
     {
+        uid: {
+            type: String,
+            required: true
+        },
+        username: {
+            type: String,
+            required: true,
+            min: 3, max: 30,
+            unique: true
+        },
         firstName: {
             type: String,
             required: true,
-            min: 3,
-            max: 20,
+            min: 3, max: 30
         },
         lastName: {
             type: String,
             required: true,
+            min: 3, max: 30
         },
         location: {
             type: String,
             required: false,
-            min: 3,
-            max: 20,
+            min: 3, max: 30,
             default: "Boston"
         },
         profilePicture: {
