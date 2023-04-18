@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_KEY =
-'COPY PASTE KEY HERE';
+const API_KEY = 'COPY PASTE KEY HERE';
 const YELP_API = "https://api.yelp.com/v3/businesses/search?";
 
 const api = axios.create({
