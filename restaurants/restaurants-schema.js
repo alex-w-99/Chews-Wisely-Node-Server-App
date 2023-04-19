@@ -1,33 +1,51 @@
 import mongoose from 'mongoose';
 
-const reviewSchema = mongoose.Schema({
-    userId: String,
-    likes: Number,
-    dislikes: Number,
-    text: String,
-});
-
 const schema = mongoose.Schema({
-  image: String,
+  image_url: String,
   name: String,
-  username: String,
-  password: String,
+  username: {
+    type: String,
+    default: ""
+  },
+  password: {
+    type: String,
+    default: ""
+  },
   yelpId: String,
-  reviewCount: {
+  rating: {
+    type: Number,
+    default: -1
+  },
+  userRating: {
+    type: Number,
+    default: -1
+  },
+  criticRating: {
+    type: Number,
+    default: -1
+  },
+  ratingCount: {
     type: Number,
     default: 0
   },
-  reviews: {
-    type: [reviewSchema],
-    default: []
+  menu: {
+    type: String,
+    default: ""
   },
-  menu: String,
   website: {
-    type: string,
-    default: null
+    type: String,
+    default: ""
   },
-  address: String,
-  phone: String,
-
+  address: {
+    type: String,
+    default: ""
+},
+  city: String,
+  state: String,
+  country: String,
+  phone: {
+    type: String,
+    default: ""
+}
 }, {collection: 'restaurants'});
 export default schema;

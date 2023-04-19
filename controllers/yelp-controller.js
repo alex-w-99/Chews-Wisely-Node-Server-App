@@ -12,10 +12,8 @@ const api = axios.create({
 
 const getBusinesses = async (req, res) => {
    const search = req.params.query;
-   console.log("We're sending this to yelp: "+  YELP_API + search);
    const response = await api.get(YELP_API + search + '');
         const businesses = JSON.stringify(response.data);
-   console.log("RESPONSE IS " + businesses);
    res.json(businesses);
 }
 
