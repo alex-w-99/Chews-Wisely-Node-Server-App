@@ -1,5 +1,4 @@
 import * as usersDao from "./users-dao.js";
-import {findByCredentials} from "./users-dao.js";
 
 const UserController = (app) => {               // map the URL pattern to handler function...
     app.post("/api/users", createUser);         // create user
@@ -19,13 +18,13 @@ const createUser = async (req, res) => {
     res.json(createdUser);
 };
 const updateUser = async (req, res) => {
-    const userId = req.params["uid"];  // get user ID from path parameter UID
+    const userId = req.params.uid;  // get user ID from path parameter UID
     const updates = req.body;
     const status = await usersDao.updateUser(userId, updates);
     res.json(status)
 };
 const deleteUser = async (req, res) => {
-    const userId = req.params["uid"];
+    const userId = req.params.uid;
     const status = await usersDao.deleteUser(userId);
     res.json(status);
 };
@@ -34,7 +33,7 @@ const findAllUsers = async (req, res) => {
     res.json(users);
 };
 const findUserById = async (req, res) => {
-    const userId = req.params["uid"];
+    const userId = req.params.uid;
     const user = await usersDao.findUserById(userId);
     if (user) {  // i.e., if user with corresponding UID exists
         res.json(user);
@@ -46,7 +45,7 @@ const findUserById = async (req, res) => {
 const profile = async (req, res) => {
     const currentUser = req.session["currentUser"];
     if (currentUser) {
-        const activeProfile = await usersDao.findUserById(currentUser.uid);
+        const activeProfile = await usersDao.findUserById(currentUser._id);
         res.json(activeProfile);
     }
     else {
@@ -55,7 +54,7 @@ const profile = async (req, res) => {
 };
 const login = async (req, res) => {
     const credentials = req.body;
-    const existingUser = await findByCredentials(credentials);
+    const existingUser = await usersDao.findUserByCredentials(credentials);
     if (!existingUser) {  // i.e., invalid login credentials
         res.sendStatus(403);  // 403 = Forbidden
     }
@@ -70,7 +69,7 @@ const logout = (req, res) => { // NOTE: logout is NOT async!
 };
 const register = async (req, res) => {
     const user = req.body;
-    const existingUser = await usersDao.findByUsername(user.username);
+    const existingUser = await usersDao.findUserByUsername(user.username);
     if (existingUser) {  // i.e., username is already taken
         res.sendStatus(403);  // 403 = Forbidden
     }

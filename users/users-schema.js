@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 
 const usersSchema = mongoose.Schema(
     {
-        _id: {
-            type: String,
-            required: true
-        },
         username: {
             type: String,
             required: true,
@@ -58,10 +54,16 @@ const usersSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        phone: {
+            type: String,
+            required: false,
+            minLength: 10, maxLength: 10,
+            default: null
+        },
         userType: {
             type: String,
             required: true,
-            enum: ["PERSONAL", "CRITIC", "BUSINESS"]
+            enum: ["PERSONAL", "CRITIC", "RESTAURANT"]
         }
     },
     {

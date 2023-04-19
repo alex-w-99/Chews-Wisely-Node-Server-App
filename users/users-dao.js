@@ -3,24 +3,24 @@ import usersModel from "./users-model.js";
 export const createUser = async (user) => await usersModel.create(user);
 
 export const updateUser = async (uid, userUpdate) => await usersModel.updateOne(
-    {uid: uid},
+    {_id: uid},
     {$set: userUpdate}
 );
 export const deleteUser = async (uid) => await usersModel.deleteOne(
-    {uid: uid}
+    {_id: uid}
 );
 
 export const findAllUsers = async () => await usersModel.find();
 
-export const findUserById = async (uid) => await usersModel.findOne(
-    {uid: uid}
+export const findUserById = async (uid) => await usersModel.findById(
+    uid, {password: false}
 );
 
-export const findByUsername = async (username) => await usersModel.findOne(
-    {username: username}
+export const findUserByUsername = async (username) => await usersModel.findOne(
+    {username: username}, {password: false}
 );
 
-export const findByCredentials = async (username, password) => await usersModel.findOne(
+export const findUserByCredentials = async (username, password) => await usersModel.findOne(
     {username, password},
     {password: false}  // i.e., do NOT include password in result of query (for security)
 );
