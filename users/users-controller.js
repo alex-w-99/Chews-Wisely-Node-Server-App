@@ -45,22 +45,24 @@ const findUserById = async (req, res) => {
 const profile = async (req, res) => {
     const currentUser = req.session["currentUser"];
     if (currentUser) {
-        const activeProfile = await usersDao.findUserById(currentUser._id);
-        res.json(activeProfile);
+        //const currentProfile = await usersDao.findUserById(currentUser._id);
+        //res.json(currentProfile);
+        res.json(currentUser);
     }
     else {
-        res.sendStatus(403);  // 403 = Forbidden
+        res.sendStatus(404);  // 404 = Not Found
     }
 };
 const login = async (req, res) => {
     const credentials = req.body;
-    const existingUser = await usersDao.findUserByCredentials(credentials);
-    if (!existingUser) {  // i.e., invalid login credentials
-        res.sendStatus(403);  // 403 = Forbidden
+    // const userName = req.body.userName; const password = req.body.password;
+    const user = await usersDao.findUserByCredentials(credentials);
+    if (!user) {  // i.e., invalid login credentials
+        res.sendStatus(404);  // 404 = Not Found
     }
     else {  // i..e, valid login credentials
-        req.session["currentUser"] = existingUser;
-        res.json(existingUser);
+        req.session["currentUser"] = user;
+        res.json(user);
     }
 };
 const logout = (req, res) => { // NOTE: logout is NOT async!
@@ -74,9 +76,9 @@ const register = async (req, res) => {
         res.sendStatus(403);  // 403 = Forbidden
     }
     else {  // i.e., username is not already taken
-        const currentUser = await usersDao.createUser(user);
-        req.session["currentUser"] = currentUser;
-        res.json(currentUser);
+        const newUser = await usersDao.createUser(user);
+        req.session["currentUser"] = newUser;
+        res.json(newUser);
     }
 };
 
