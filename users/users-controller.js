@@ -54,9 +54,9 @@ const profile = async (req, res) => {
     }
 };
 const login = async (req, res) => {
-    const credentials = req.body;
-    // const userName = req.body.userName; const password = req.body.password;
-    const user = await usersDao.findUserByCredentials(credentials);
+    const username = req.body.username;
+    const password = req.body.password;
+    const user = await usersDao.findUserByCredentials(username, password);
     if (!user) {  // i.e., invalid login credentials
         res.sendStatus(404);  // 404 = Not Found
     }

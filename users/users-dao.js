@@ -21,6 +21,6 @@ export const findUserByUsername = async (username) => await usersModel.findOne(
 );
 
 export const findUserByCredentials = async (username, password) => await usersModel.findOne(
-    {username, password},
+    {username: username, password},
     {password: false}  // i.e., do NOT include password in result of query (for security)
 );
