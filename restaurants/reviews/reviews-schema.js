@@ -5,7 +5,10 @@ const schema = mongoose.Schema({
     userId: String,
     userName: String,
     userImage: String,
-    isCritic: Boolean,
+    isCritic: {
+      type: Boolean,
+      default: false
+    },
     liked: {
       type: Boolean,
       default: false
