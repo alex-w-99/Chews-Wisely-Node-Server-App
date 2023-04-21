@@ -1,6 +1,6 @@
 import * as usersDao from "./users-dao.js";
 
-const UserController = (app) => {               // map the URL pattern to handler function...
+const UserController = (app) => {               // map the URL pattern to handler function
     app.post("/api/users", createUser);         // create user
     app.put('/api/users/:uid', updateUser);     // update user
     app.delete('/api/users/:uid', deleteUser);  // delete user
