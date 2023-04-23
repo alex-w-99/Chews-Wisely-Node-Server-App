@@ -33,29 +33,23 @@ const findAllUsers = async (req, res) => {
     res.json(users);
 };
 const findUserById = async (req, res) => {
-    //console.log(">>>users-controller.js / findUserById")
     const userId = req.params.uid;
     const user = await usersDao.findUserById(userId);
     if (user) {  // i.e., if user with corresponding UID exists
-        //console.log(">>>users-controller.js / user exists")
         res.json(user);
     }
     else {  // i.e., if user with corresponding UID does not exist
-        //console.log(">>>users-controller.js / user does NOT exist")
         res.sendStatus(404);  // 404 = Not Found
     }
 };
 const profile = async (req, res) => {
     const currentUser = req.session["currentUser"];
-    //console.log("%users-controller.js -> currentUser="+currentUser)
     if (currentUser) {
-        //console.log("%users-controller.js -> if statement")
         const currentProfile = await usersDao.findUserById(currentUser._id);
         res.json(currentProfile);
         //res.json(currentUser);
     }
     else {
-        //console.log("%users-controller.js -> else statement")
         res.sendStatus(403);  // 403 = Forbidden
     }
 };
