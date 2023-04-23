@@ -1,29 +1,29 @@
 import * as followDao from "./follow-dao.js";
 
 const FollowController = (app) => {                       // map the URL pattern to handler function
-    app.post("/api/follow", follow);                      // user follows another user
-    app.delete("/api/follow/:fid", unfollow);             // user unfollows another user
+    app.post("/api/follows", followUser);                 // user follows another user
+    app.delete("/api/follows/:fid", unfollowUser);        // user unfollows another user
     app.get("/api/users/:uid2/followed", findFollowId);   // find id of follow object
     app.get("/api/users/:uid/followers", findFollowers);  // find all followers of a user
     app.get("/api/users/:uid/following", findFollowing);  // find all users followed by a user
 };
 
-const follow = async (req, res) => {
+const followUser = async (req, res) => {
     const followRequest = req.body;
     const currentUser = req.session["currentUser"];
     followRequest.follower = currentUser._id;
-    const createdFollow = await followDao.follow(followRequest);
+    const createdFollow = await followDao.followUser(followRequest);
     res.json(createdFollow);
 }
 
-const unfollow = async (req, res) =>
-    await followDao.unfollow(req.params.fid)
+const unfollowUser = async (req, res) =>
+    await followDao.unfollowUser(req.params.fid)
         .then(deleteStatus => res.send(deleteStatus));
 
 const findFollowId = async (req, res) => {
     const currentUser = req.session["currentUser"];
-    if (!currentUser) {  // i.e, if there is no currentUser logged in
-        res.sendStatus(401);  // 401 = Unauthorized
+    if (currentUser === null) {  // i.e, if there is no currentUser logged in
+        res.sendStatus(404);  // 404 = Not Found
     }
     else {  // i.e, if there is a currentUser logged in
         const uid1 = currentUser._id;
