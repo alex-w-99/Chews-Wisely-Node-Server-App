@@ -12,17 +12,31 @@ const api = axios.create({
 
 const getOneBusiness = async (req, res) => {
    const yelpId = req.params.id;
-   const response = await api.get(YELP_API + yelpId + '');
-   const business = JSON.stringify(response.data);
-   res.json(business);
+   let status = 200;
+   const response = await api.get(YELP_API + yelpId + '')
+        .catch((error) => {
+           status = 404;
+           res.send(status);
+           return;
+        });
+   if (status == 200) {
+       const business = JSON.stringify(response.data);
+       res.json(business);
+   }
 }
 
 const getBusinesses = async (req, res) => {
    const search = req.params.query;
-   const response = await api.get(YELP_API + "search?" + search + '');
-   const businesses = JSON.stringify(response.data);
-   console.log("returning " + JSON.stringify(businesses));
-   res.json(businesses);
+   let status = 200;
+   const response = await api.get(YELP_API + "search?" + search + '')
+      .catch((error) => {
+               status = 404;
+               res.sendStatus(status);
+            });;
+   if (status == 200) {
+       const businesses = JSON.stringify(response.data);
+       res.json(businesses);
+   }
 }
 
 export default (app) => {
