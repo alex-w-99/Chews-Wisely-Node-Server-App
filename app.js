@@ -39,8 +39,9 @@ app.use(
 if (production) {
     app.set("trust proxy", 1);
 }
+const secret = crypto.randomBytes(42).toString("hex");
 let sess = {
-    secret: "any string", // process.env.SECRET
+    secret: secret,
     saveUninitialized: true,
     resave: true,
     cookie: {
