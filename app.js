@@ -8,6 +8,9 @@ import ReviewsController from './controllers/reviews-controller.js';
 import UsersController from "./users/users-controller.js";
 import FollowController from "./follow/follow-controller.js";
 
+// Set "production" to true if running on servers; set to false if running on localhost:
+const production = true;
+
 // Connecting to MongoDB:
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/finalproject';
 const MONGOOSE_CONNECT_OPTIONS = {
@@ -27,20 +30,22 @@ app.use(
     cors(
            {
                credentials: true,
-               origin: true  // origin: "http://localhost:3000"
+               origin: true
            }
     )
 );
 
 // Configuring session library:
-app.set("trust proxy", 1);
+if (production) {
+    app.set("trust proxy", 1);
+}
 let sess = {
     secret: "any string", // process.env.SECRET
     saveUninitialized: true,
     resave: true,
     cookie: {
-        sameSite: "none",
-        secure: true  // needs HTTPS
+        sameSite: production ? "none" : "lax",
+        secure: production  // needs HTTPS
     }
 };
 app.use(session(sess));
