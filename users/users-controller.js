@@ -1,6 +1,6 @@
 import * as usersDao from "./users-dao.js";
 
-const UserController = (app) => {               // map the URL pattern to handler function...
+const UserController = (app) => {               // map the URL pattern to handler function
     app.post("/api/users", createUser);         // create user
     app.put('/api/users/:uid', updateUser);     // update user
     app.delete('/api/users/:uid', deleteUser);  // delete user
@@ -45,12 +45,12 @@ const findUserById = async (req, res) => {
 const profile = async (req, res) => {
     const currentUser = req.session["currentUser"];
     if (currentUser) {
-        //const currentProfile = await usersDao.findUserById(currentUser._id);
-        //res.json(currentProfile);
-        res.json(currentUser);
+        const currentProfile = await usersDao.findUserById(currentUser._id);
+        res.json(currentProfile);
+        //res.json(currentUser);
     }
     else {
-        res.sendStatus(404);  // 404 = Not Found
+        res.sendStatus(403);  // 403 = Forbidden
     }
 };
 const login = async (req, res) => {
