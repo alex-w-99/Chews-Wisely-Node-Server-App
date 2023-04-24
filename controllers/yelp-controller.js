@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_KEY =
-'wdVxEWv2GUKA1dG0M1sGpitqc8vVrhhKX4LPXHXiTUcEaH1nBUeP7B_991JvTJ7U8hZGHh35mQMEw9icEELJ_t-7qx6XbQvCc3kTsmgibwvZbJ91xJYvBOK411kyZHYx';
+//const YELP_API = "https://api.yelp.com/v3/businesses/search?";
 const YELP_API = "https://api.yelp.com/v3/businesses/";
+const API_KEY = "wdVxEWv2GUKA1dG0M1sGpitqc8vVrhhKX4LPXHXiTUcEaH1nBUeP7B_991JvTJ7U8hZGHh35mQMEw9icEELJ_t-7qx6XbQvCc3kTsmgibwvZbJ91xJYvBOK411kyZHYx";
 
 const api = axios.create({
     headers: {
