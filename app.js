@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import session from "express-session";
+import crypto from "crypto";
 import YelpController from './controllers/yelp-controller.js';
 import RestaurantsController from './controllers/restaurants-controller.js';
 import ReviewsController from './controllers/reviews-controller.js';
@@ -39,8 +40,9 @@ app.use(
 if (production) {
     app.set("trust proxy", 1);
 }
+const secret = crypto.randomBytes(32).toString("hex");
 let sess = {
-    secret: "any string", // process.env.SECRET
+    secret: secret,
     saveUninitialized: true,
     resave: true,
     cookie: {
