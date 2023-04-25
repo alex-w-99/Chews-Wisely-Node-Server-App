@@ -64,6 +64,11 @@ const usersSchema = mongoose.Schema(
             type: String,
             required: true,
             enum: ["PERSONAL", "CRITIC", "RESTAURANT"]
+        },
+        userTypeField: { // PERSONAL=favoriteFood; CRITIC=specialtyCuisine; RESTAURANT=restaurantId
+            type: String ,
+            required: true,
+            default: ""
         }
     },
     {
