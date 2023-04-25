@@ -4,7 +4,7 @@ import * as ratingsDao
 const createRating = async (req, res) => {
   const rating = req.body;
   const inserted = await ratingsDao
-                            .createRating(review);
+                            .createRating(rating);
   res.json(inserted);
 }
 
