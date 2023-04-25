@@ -1,5 +1,5 @@
 import * as restaurantsDao
-        from '../restaurants/restaurants-dao.js';
+        from './restaurants-dao.js';
 
 const createRestaurant = async (req, res) => {
   const newRestaurant = req.body;
