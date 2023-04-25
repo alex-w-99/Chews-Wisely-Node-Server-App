@@ -5,6 +5,7 @@ import session from "express-session";
 import crypto from "crypto";
 import YelpController from './controllers/yelp-controller.js';
 import RestaurantsController from './controllers/restaurants-controller.js';
+import RatingsController from './restaurants/ratings/ratings-controller.js'
 import ReviewsController from './controllers/reviews-controller.js';
 import UsersController from "./users/users-controller.js";
 import FollowController from "./follow/follow-controller.js";
@@ -23,7 +24,7 @@ const MONGOOSE_CONNECT_OPTIONS = {
     socketTimeoutMS: 45000,  // close sockets after 45 seconds of inactivity
     family: 4                // use IPv4, skip trying IPv6
 }
-mongoose.connect(CONNECTION_STRING, MONGOOSE_CONNECT_OPTIONS);
+mongoose.connect('mongodb+srv://melaniegilbertbecker:restaurantz@finalprojectdata.ydag8og.mongodb.net/?retryWrites=true&w=majority', MONGOOSE_CONNECT_OPTIONS);
 
 // Configuring cors to support cookies (and restricting network access from React app):
 const app = express();
@@ -57,6 +58,7 @@ app.use(express.json());
 
 YelpController(app);
 RestaurantsController(app);
+RatingsController(app);
 ReviewsController(app);
 UsersController(app);
 FollowController(app);
