@@ -6,6 +6,7 @@ import YelpController from './external/yelp-controller.js';
 import RestaurantsController from './restaurants/restaurants-controller.js';
 import ReviewsController from './restaurants/reviews/reviews-controller.js';
 import RatingsController from './restaurants/ratings/ratings-controller.js';
+import crypto from "crypto";
 import UsersController from "./users/users-controller.js";
 import FollowController from "./follow/follow-controller.js";
 
@@ -19,10 +20,10 @@ const MONGOOSE_CONNECT_OPTIONS = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     serverSelectionTimeoutMS: 5000,
-    autoIndex: false, // Don't build indexes
-    maxPoolSize: 10, // Maintain up to 10 socket connections
-    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-    family: 4 // Use IPv4, skip trying IPv6
+    autoIndex: false,        // do not build indexes
+    maxPoolSize: 10,         // maintain up to 10 socket connections
+    socketTimeoutMS: 45000,  // close sockets after 45 seconds of inactivity
+    family: 4                // use IPv4, skip trying IPv6
 }
 mongoose.connect('mongodb+srv://melaniegilbertbecker:restaurantz@finalprojectdata.ydag8og.mongodb.net/?retryWrites=true&w=majority', MONGOOSE_CONNECT_OPTIONS);
 
@@ -41,8 +42,9 @@ app.use(
 if (production) {
     app.set("trust proxy", 1);
 }
+const secret = crypto.randomBytes(32).toString("hex");
 let sess = {
-    secret: "any string", // process.env.SECRET
+    secret: secret,
     saveUninitialized: true,
     resave: true,
     cookie: {
