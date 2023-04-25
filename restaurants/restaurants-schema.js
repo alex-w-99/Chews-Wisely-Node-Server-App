@@ -28,9 +28,13 @@ const schema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  menu: {
-    type: String,
-    default: ""
+  criticRatingCount: {
+    type: Number,
+    default: 0
+  },
+  userRatingCount: {
+      type: Number,
+      default: 0
   },
   website: {
     type: String,
