@@ -5,6 +5,7 @@ import session from "express-session";
 import YelpController from './external/yelp-controller.js';
 import RestaurantsController from './restaurants/restaurants-controller.js';
 import ReviewsController from './restaurants/reviews/reviews-controller.js';
+import RatingsController from './restaurants/ratings/ratings-controller.js';
 import UsersController from "./users/users-controller.js";
 import FollowController from "./follow/follow-controller.js";
 
@@ -57,6 +58,7 @@ app.use(express.json());
 YelpController(app);
 RestaurantsController(app);
 ReviewsController(app);
+RatingsController(app);
 UsersController(app);
 FollowController(app);
 

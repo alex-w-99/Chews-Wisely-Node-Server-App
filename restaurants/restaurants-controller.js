@@ -27,7 +27,7 @@ const updateRestaurant = async (req, res) => {
   const updateId = req.params.rid;
   const updates = req.body;
   const status = await restaurantsDao
-                          .updateRestaurant(updateId, udpates);
+                          .updateRestaurant(updateId, updates);
   res.json(status);
 }
 

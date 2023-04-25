@@ -6,5 +6,5 @@ const schema = mongoose.Schema({
     isCritic: Boolean,
     score: Number
 },
-{ collection: 'reviews'});
+{ collection: 'ratings'});
 export default schema;
