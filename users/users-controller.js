@@ -49,9 +49,7 @@ const profile = async (req, res) => {
         res.json(currentProfile);
         //res.json(currentUser);
     }
-    else {
-        res.sendStatus(403);  // 403 = Forbidden
-    }
+    //else { res.sendStatus(403); }  // 403 = Forbidden
 };
 const login = async (req, res) => {
     const username = req.body.username;
