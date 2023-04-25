@@ -1,7 +1,5 @@
 import * as reviewsDao
-        from '../restaurants/reviews/reviews-dao.js';
-import * as restaurantsDao
-        from '../restaurants/restaurants-dao.js';
+        from './reviews-dao.js';
 
 const createReview = async (req, res) => {
   const review = req.body;
@@ -19,9 +17,7 @@ const findReviews = async (req, res) => {
 }
 
 const deleteReview = async (req, res) => {
-  console.log("fuck this review in particular");
   const revId = req.params.revId;
-  console.log("here's the ID " + JSON.stringify(revId));
   const status = await reviewsDao.deleteReview(revId);
   res.json(status);
 }
