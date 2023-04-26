@@ -6,3 +6,4 @@ export const updateRating = (rid, rating) => ratings.updateOne({_id: rid},
 export const createRating = (rating) => ratings.create(rating);
 export const findRating = (restId, uId) =>
                     ratings.findOne({restaurantId: restId, userId: uId});
+export const findByUser = (uid) => ratings.find({userId: uid})

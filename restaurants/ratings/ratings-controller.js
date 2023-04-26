@@ -20,6 +20,12 @@ const findRating = async (req, res) => {
   res.json(rating);
 }
 
+const findUserRatings = async (req, res) => {
+  const uid = req.params.uid;
+  const ratings = await ratingsDao.findByUser(uid);
+  res.json(ratings);
+}
+
 const updateRating = async (req, res) => {
   const rid = req.params.rid;
   const updates = req.body;
@@ -30,5 +36,6 @@ const updateRating = async (req, res) => {
 export default (app) => {
   app.post('/api/restaurants/ratings', createRating);
   app.get('/api/restaurants/ratings/:restId/:uId', findRating);
+  app.get('/api/restaurants/ratings/:uid', findUserRatings);
   app.put('/api/restaurants/ratings/:rid', updateRating);
 }
