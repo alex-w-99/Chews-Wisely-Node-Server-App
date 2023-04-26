@@ -68,6 +68,10 @@ const usersSchema = mongoose.Schema(
             required: true,
             enum: ["PERSONAL", "CRITIC", "RESTAURANT"]
         },
+        bookmarks: {
+            type: [String],
+            default: []
+        },
         userTypeField: {  // PERSONAL=favoriteFood; CRITIC=specialtyCuisine; RESTAURANT=yelpId
             type: String ,
             required: true,

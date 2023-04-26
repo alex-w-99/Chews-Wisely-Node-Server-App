@@ -10,6 +10,11 @@ const createRestaurant = async (req, res) => {
   res.json(inserted);
 }
 
+const findAll = async (req, res) => {
+  const restaurants = await restaurantsDao.findAll();
+  res.json(restaurants);
+}
+
 const findWithYelp = async (req, res) => {
   console.log("GOING TO FIND WITH YELP");
   const targetId = req.params.yid;
@@ -40,6 +45,7 @@ const deleteRestaurant = async (req, res) => {
 
 export default (app) => {
   app.post('/api/restaurants', createRestaurant);
+  app.get('/api/restaurants', findAll);
   app.get('/api/restaurants/yelp/:yid', findWithYelp);
   app.get('/api/restaurants/:rid', findWithId);
   app.put('/api/restaurants/:rid', updateRestaurant);

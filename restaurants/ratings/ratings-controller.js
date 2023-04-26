@@ -2,16 +2,21 @@ import * as ratingsDao
         from './ratings-dao.js';
 
 const createRating = async (req, res) => {
+  console.log("Going to create rating")
   const rating = req.body;
   const inserted = await ratingsDao
                             .createRating(rating);
+  console.log("CREATED THIS RATING: " + JSON.stringify(inserted));
   res.json(inserted);
 }
 
 const findRating = async (req, res) => {
   const restId = req.params.restId
   const uId = req.params.uId
+  console.log("RESTID IS " + restId)
+  console.log("uId IS " + uId);
   const rating = await ratingsDao.findRating(restId, uId);
+  console.log("Found a rating: " + JSON.stringify(rating))
   res.json(rating);
 }
 

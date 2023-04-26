@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 const schema = mongoose.Schema({
     restaurantId: String,
+    restaurantYelp: String,
+    restaurantName: String,
     userId: String,
     userName: String,
     userImage: String,
