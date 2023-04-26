@@ -30,10 +30,10 @@ mongoose.connect(CONNECTION_STRING, MONGOOSE_CONNECT_OPTIONS);
 const app = express();
 app.use(
     cors(
-           {
-               credentials: true,
-               origin: true
-           }
+        {
+            credentials: true,
+            origin: true
+        }
     )
 );
 

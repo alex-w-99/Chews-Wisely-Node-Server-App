@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const isRestaurant = (userType) => userType === "RESTAURANT";
+//unique: { validator: isRestaurant, message: "Restaurants must have a unique (non-used) userTypeField!" },
+//const isRestaurant = (userType) => { return userType === "RESTAURANT"; }
 
 const usersSchema = mongoose.Schema(
     {
@@ -59,7 +60,7 @@ const usersSchema = mongoose.Schema(
         phone: {
             type: String,
             required: false,
-            minLength: 0, maxLength: 11,
+            minLength: 0, maxLength: 15,
             default: ""
         },
         userType: {
@@ -74,9 +75,6 @@ const usersSchema = mongoose.Schema(
         userTypeField: {  // PERSONAL=favoriteFood; CRITIC=specialtyCuisine; RESTAURANT=yelpId
             type: String ,
             required: true,
-            //unique: {validator: isRestaurant, message: "Restaurants must have a unique (non-used) userTypeField!"},
-            //unique: isRestaurant(this.userType),
-            //unique: function() { return this.userType === "RESTAURANT" }(),
             default: ""
         },
         menu: {  // only accessible to userType RESTAURANT

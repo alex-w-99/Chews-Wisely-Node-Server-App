@@ -1,15 +1,15 @@
 import * as usersDao from "./users-dao.js";
 
-const UserController = (app) => {               // map the URL pattern to handler function
-    app.post("/api/users", createUser);         // create user
-    app.put('/api/users/:uid', updateUser);     // update user
-    app.delete('/api/users/:uid', deleteUser);  // delete user
-    app.get('/api/users', findAllUsers);        // find all users
-    app.get('/api/users/:uid', findUserById);   // find a user by their UID
-    app.post('/api/users/profile', profile);    // fetch current profile
-    app.post('/api/users/login', login);        // login a user
-    app.post('/api/users/logout', logout);      // logout a user
-    app.post('/api/users/register', register);  // register a user
+const UserController = (app) => {                    // map the URL pattern to handler function
+    app.post("/api/users", createUser);              // create user
+    app.put('/api/users/:uid', updateUser);          // update user
+    app.delete('/api/users/:uid', deleteUser);       // delete user
+    app.get('/api/users', findAllUsers);             // find all users
+    app.get('/api/users/:uid', findUserById);        // find a user by their UID
+    app.post('/api/users/profile', profile);         // fetch current profile
+    app.post('/api/users/login', login);             // login a user
+    app.post('/api/users/logout', logout);           // logout a user
+    app.post('/api/users/register', register);       // register a user
 };
 
 const createUser = async (req, res) => {
