@@ -21,3 +21,13 @@ export const findUserByCredentials = async (username, password) => await usersMo
     {username: username, password},
     {password: false}  // i.e., do NOT include password in result of query (for security)
 );
+
+export const createBookmark = async(uid, bookmark) => await usersModel.update(
+    {_id: uid},
+    {$push: { bookmarks: bookmark }}
+);
+
+export const deleteBookmark = async(uid, rid) => await usersModel.update(
+    {_id: uid},
+    {$pull: {bookmarks.restaurantId = rid}}
+);

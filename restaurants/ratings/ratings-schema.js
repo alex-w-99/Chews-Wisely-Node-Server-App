@@ -4,7 +4,7 @@ const schema = mongoose.Schema({
     restaurantId: String,
     userId: String,
     isCritic: Boolean,
-    score: Number
+    score: String
 },
 { collection: 'reviews'});
 export default schema;

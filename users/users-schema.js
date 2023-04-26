@@ -64,7 +64,12 @@ const usersSchema = mongoose.Schema(
             type: String,
             required: true,
             enum: ["PERSONAL", "CRITIC", "RESTAURANT"]
-        }
+        },
+        bookmarks: [{
+         restaurantId: String,
+         restaurantName: String,
+         imageUrl: String
+        }]
     },
     {
         collection: "users"  // collection name where users are stored in users database
