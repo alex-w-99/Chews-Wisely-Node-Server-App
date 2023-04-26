@@ -24,7 +24,7 @@ const MONGOOSE_CONNECT_OPTIONS = {
     socketTimeoutMS: 45000,  // close sockets after 45 seconds of inactivity
     family: 4                // use IPv4, skip trying IPv6
 }
-mongoose.connect('mongodb+srv://melaniegilbertbecker:restaurantz@finalprojectdata.ydag8og.mongodb.net/?retryWrites=true&w=majority', MONGOOSE_CONNECT_OPTIONS);
+mongoose.connect(CONNECTION_STRING, MONGOOSE_CONNECT_OPTIONS);
 
 // Configuring cors to support cookies (and restricting network access from React app):
 const app = express();

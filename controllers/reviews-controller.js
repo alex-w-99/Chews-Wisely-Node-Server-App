@@ -10,11 +10,19 @@ const createReview = async (req, res) => {
   res.json(inserted);
 }
 
-const findReviews = async (req, res) => {
+const findByRestaurant = async (req, res) => {
   const rid = req.params.restaurantId
-  const reviews = await reviewsDao.findReviews(rid);
+  const reviews = await
+                   reviewsDao.findByRestaurant(rid);
   res.json(reviews);
 }
+
+const findByUser = async (req, res) => {
+  const uid = req.params.uid
+  const reviews = await reviewsDao.findByUser(uid);
+  res.json(reviews);
+}
+
 
 const deleteReview = async (req, res) => {
   const revId = req.params.revId;
@@ -29,9 +37,16 @@ const updateReview = async (req, res) => {
   res.json(status);
 }
 
+const deleteAll = async(req, res) => {
+  const status = await reviewsDao.deleteAll();
+  res.json(status);
+}
+
 export default (app) => {
   app.post('/api/restaurants/reviews', createReview);
-  app.get('/api/restaurants/reviews/:restaurantId', findReviews);
+  app.get('/api/restaurants/reviews/:restaurantId', findByRestaurant);
+  app.get('/api/restaurants/reviews/users/:uid', findByUser)
   app.delete('/api/restaurants/reviews/:revId', deleteReview);
+  app.delete('/api/restaurants/reviews/', deleteAll)
   app.put('/api/restaurants/reviews/:revId', updateReview);
 }

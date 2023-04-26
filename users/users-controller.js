@@ -10,22 +10,8 @@ const UserController = (app) => {               // map the URL pattern to handle
     app.post('/api/users/login', login);        // login a user
     app.post('/api/users/logout', logout);      // logout a user
     app.post('/api/users/register', register);  // register a user
-    app.post('/api/users/bookmarks/:uid', createBookmark)
-    app.delete('/api/users/bookmarks/:uid/:rid', deleteBookmark)
 };
 
-const createBookmark = async (req, res) => {
-    const uid = req.params.uid;
-    const bookmark = req.body;
-    const createdBookmark = await usersDao.createBookmark(uid, bookmark);
-    res.json(createdBookmark);
-};
-const deleteBookmark = async (req, res) => {
-    const uid = req.params.uid;
-    const rid = req.params.rid;
-    const status = await usersDao.deleteBookmark(uid, rid);
-    res.json(status);
-};
 const createUser = async (req, res) => {
     const newUser = req.body;
     const createdUser = await usersDao.createUser(newUser);
