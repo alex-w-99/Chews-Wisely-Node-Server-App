@@ -1,4 +1,4 @@
-# final-project-node-server-app
+# Chews-Wisely-Node-Server-App
 
 This repository contains the Node.js back-end code for a Yelp-like social media and restaurant reviews web application. The web application with 6 distinct screens: Login/Register, Home, Profile, Search/results, Details. The back-end uses MongoDB to store its data in the following collections: users, follow, ratings, restaurants, reviews, and reviewsmodels. The corresponding front-end code can be found at the GitHub repository [linked here](https://github.com/alex-w-99/Chews-Wisely-React-Web-App/).
 

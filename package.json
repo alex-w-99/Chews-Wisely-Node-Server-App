@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "final-project-node-server-app",
+  "name": "chews-wisely-node-server-app",
   "version": "1.0.0",
   "description": "Node.js HTTP Web server back-end for Chews Wisely web app",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex-w-99/final-project-node-server-app.git"
+    "url": "git+https://github.com/alex-w-99/Chews-Wisely-Node-Server-App.git",
   },
   "keywords": [
     "Node",
@@ -21,9 +21,9 @@
   "author": "Mohammed Amer, Melanie Becker, Alex Wilcox",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alex-w-99/final-project-node-server-app/issues"
+    "url": "https://github.com/alex-w-99/Chews-Wisely-Node-Server-App/issues"
   },
-  "homepage": "https://github.com/alex-w-99/final-project-node-server-app#readme",
+  "homepage": "https://github.com/alex-w-99/Chews-Wisely-Node-Server-App#readme",
   "dependencies": {
     "@mui/icons-material": "^5.11.16",
     "axios": "^1.3.5",
