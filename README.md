@@ -1,8 +1,8 @@
 # final-project-node-server-app
 
-This repository contains the Node.js back-end code for a Yelp-like social media and restaurant reviews web application. The web application with 6 distinct screens: Login/Register, Home, Profile, Search/results, Details. The back-end uses MongoDB to store its data in the following collections: users, follow, ratings, restaurants, reviews, and reviewsmodels.
+This repository contains the Node.js back-end code for a Yelp-like social media and restaurant reviews web application. The web application with 6 distinct screens: Login/Register, Home, Profile, Search/results, Details. The back-end uses MongoDB to store its data in the following collections: users, follow, ratings, restaurants, reviews, and reviewsmodels. The corresponding front-end code can be found at the GitHub repository [linked here](https://github.com/alex-w-99/final-project-react-web-app/tree/main).
 
-The corresponding front-end code can be found at the GitHub repository [linked here](https://github.com/alex-w-99/final-project-react-web-app/tree/main).
+Please see a demo video of this web application [linked here](https://youtu.be/ZXjzzTKO9wc).
 
 Please see a visual overview of the project's overarching structure below:
 
