@@ -29,3 +29,9 @@ The login and register page allow users to register with the website and then lo
 
 ## Render URL:
 - https://final-project-node-server-app.onrender.com/
+
+## Acknowledgements
+
+- Melanie Becker and Mohammed Amer, my partners for this project.
+- Professor Jose Annunziato, my Web Development professor.
+- 
