@@ -1,6 +1,6 @@
 # final-project-node-server-app
 
-This repository contains the Node.js back-end code for a Yelp-like social media and restaurant reviews web application. The web application with 6 distinct screens: Login/Register, Home, Profile, Search/results, Details.
+This repository contains the Node.js back-end code for a Yelp-like social media and restaurant reviews web application. The web application with 6 distinct screens: Login/Register, Home, Profile, Search/results, Details. The back-end uses MongoDB to store its data in the following collections: users, follow, ratings, restaurants, reviews, and reviewsmodels.
 
 The corresponding front-end code can be found at the GitHub repository [linked here](https://github.com/alex-w-99/final-project-react-web-app/tree/main).
 
@@ -26,21 +26,6 @@ The details page allows users to view a detailed view of the search result, incl
 
 ### Login/Register page
 The login and register page allow users to register with the website and then login later on. Users can choose a role when signing up or select an admin role later. The login and register page disallows access one web page (namely, `/profile`) unless logged in and adapts content based on whether the user is logged in or not. The login and register pages are mapped to `/login` and `/register` respectively.
-
-
-
-
-
-
-
-
-
-
-========================================
-
-Node.js HTTP Web server for final-project-react-web-app
-
-
 
 ## Render URL:
 - https://final-project-node-server-app.onrender.com/
